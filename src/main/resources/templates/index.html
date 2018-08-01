@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/StyleSheet.css}"/>
+        <title>Calculator</title>
+    </head>
+    <body>
+        <h1>Calculator :</h1>
+        <div>
+            <form id="form1" th:action="@{/addnew}" th:object="${numbers}" method="post">
+                <input type="text" th:field="*{first}" required>
+                <input type="text" th:field="*{second}" required>
+                <input type="text" th:field="*{third}" required>
+                <input type="text" th:field="*{fourth}" required>
+                <input type="submit" value="Send">
+            </form>
+        </div>
+        <div>
+            <form id="form2" action="#" th:action="@{/sum}" method="post">
+                <select name="summary">
+                    <option th:each="numbersId: ${allId}" th:text="${numbersId.id}" th:value="${numbersId.id}"></option>
+                </select>
+                <input type="submit" value="Select">
+            </form>
+        </div>
+        <div>
+            <form id="form3" action="/squared" method="post">
+                <input type="text" name="squaredById">
+                <input type="submit" value="Get squared!">
+            </form>
+        </div>
+        <p th:text="${msg}"></p>
+        <div>
+            <table border="1px solid">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First number</th>
+                        <th>Second number</th>
+                        <th>Third number</th>
+                        <th>Fourth number</th>
+                    </tr>
+                </thead>
+                <tr th:each="number : ${allId}">
+                    <td th:text="${number.getId()}"></td>
+                    <td th:text="${number.getFirst()}"></td>
+                    <td th:text="${number.getSecond()}"></td>
+                    <td th:text="${number.getThird()}"></td>
+                    <td th:text="${number.getFourth()}"></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

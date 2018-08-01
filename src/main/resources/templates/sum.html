@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/StyleSheet.css}"/>
+        <title>Calculator</title>
+    </head>
+    <body>
+        <h1 th:object="${thenumbers}" th:text="'Your numbers are: ' + *{first} + ', ' + *{second} + ', ' + *{third} + ', ' + *{fourth}"></h1>
+        <h2 th:text="'Summa: ' + ${sumnumbers}"></h2>
+        <a href="http://localhost:8080">Home page</a>
+    </body>
+</html>
